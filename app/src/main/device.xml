@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deviceset>
+ <device>
+  <id>176</id>
+  <devicetype>1</devicetype>
+  <name>abcd</name>
+  <ip>192.168.3.152</ip>
+  <port>6200</port>
+  <username>admin</username>
+  <password>12345</password>
+  <manufacturer>1</manufacturer>
+  <transferserverid>1234</transferserverid>
+  <storageserverid>2345</storageserverid>
+  <channelset>
+   <channel>
+    <id>138</id>
+    <channelid>0</channelid>
+    <channelname>test1</channelname>
+    <type>0</type>
+    <organization>123</organization>
+    </channel>
+  <channel>
+    <id>139</id>
+    <channelid>1</channelid>
+    <channelname>test2</channelname>
+    <type>0</type>
+    <organization>123</organization>
+    </channel>
+	
+	  <channel>
+    <id>140</id>
+    <channelid>2</channelid>
+    <channelname>test3</channelname>
+    <type>0</type>
+    <organization>123</organization>
+    </channel>
+	
+	  <channel>
+    <id>141</id>
+    <channelid>3</channelid>
+    <channelname>test4</channelname>
+    <type>0</type>
+    <organization>123</organization>
+    </channel>
+ </channelset>
+ </device>
+ 
+</deviceset>

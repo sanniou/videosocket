@@ -1,0 +1,40 @@
+1，新建工程app
+2，在类中声明native方法 例如：public native String getStringFromC(); static{  System.loadLibrary("jnilib");}
+3，点击app右键New-Folder-JNI Folder 这样就再src下的main下生成了jni目录
+4，编辑C文件:
+
+#include "com_test_jnitest_JniTest.h"
+
+// 定义在MainActivity.java类中的helloC对应的C语言函数
+jstring Java_com_test_jnitest_JniTest_getStrFromC(JNIEnv* env, jobject obj){
+    char* str = "hello from C";
+
+    // 调用 jni.h中定义的创建字符串函数
+    jstring string = (*(*env)).NewStringUTF(env, str);
+    return string;
+}
+
+5，生成.h头文件----打开Terminal---studio的命令行---转到工程的src目录下-----执行命令-----javah -classpath XXX -jni -d jni XXX.XXX.XXX
+     (          生成jni文件夹的路径                                         )
+例子：D:\developers_workspace\Android\AirPortTrain\AirPortTrainPro\src\main>javah -d jni -classpath D:\developers_workspace\sdk\platforms\android-19\android.jar;D:\developers_workspace\Android\AirPortTrain\AirPortTrainPro\build\intermediates\classes\debug vfain2.work.video.TestDecoder（包名+类名）
+6，在local.properties 文件中声明ndk与sdk路径：
+ndk.dir=D\:\\developers_workspace\\sdk\\ndk-bundle
+sdk.dir=D\:\\developers_workspace\\sdk
+
+7，在gradle.properties文件中添加一行代码：android.useDeprecatedNdk=true
+
+8，在当前的项目app的build.gradle中的defaultConfig中设置：
+  ndk {
+            moduleName "jnilib"          //生成的so名字，即是
+            abiFilters "armeabi", "armeabi-v7a", "x86" //输出指定三种abi体系结构下的so库，目前可有可无。}
+        }
+
+9,生成链接库so
+cd D:\developers_workspace\sdk\ndk-bundle
+
+ndk-build NDK_PROJECT_PATH=D:\developers_workspace\VFAIN-platform\trunk\android\Trank\vfain APP_BUILD_SCRIPT=D:\workspace\Trank_v3\vfain2\src\main\jni\Android.mk APP_PLATFORM=android-19 NDK_OUT=D:\developers_workspace\VFAIN-platform\trunk\android\Trank\vfain\libs\obj NDK_LIBS_OUT=D:\developers_workspace\VFAIN-platform\trunk\android\Trank\vfain\libs APP_ABI=armeabi
+ndk-build NDK_PROJECT_PATH=D:\Demo\Glibrary\videosocket APP_BUILD_SCRIPT=D:\Demo\Glibrary\videosocket\src\main\jni\Android.mk APP_PLATFORM=android-19 NDK_OUT=D:\Demo\Glibrary\videosocket\libs\obj NDK_LIBS_OUT=D:\Demo\Glibrary\videosocket\libs APP_ABI=armeabi
+
+D:\developers_workspace\Android\AirPortTrain\AirPortTrainPro\build\intermediates\ndk\debug\Android.mk
+
+

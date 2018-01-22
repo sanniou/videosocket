@@ -1,0 +1,75 @@
+// 命令通道请求打开视频
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+<type>8193</type>
+<devid>176</devid>
+<devip>192.168.1.153<devip/>
+<channelid>0</channelid>
+<streamtype>1</streamtype>
+</request>
+
+
+ // 流通道请求视频订阅
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+<type>8195</type>           // 请求命令，cmd命令类型
+<devid>176</devid>          // 设备ID  ，carmeraInfo中的deviceid
+<devip>192.168.1.153<devip/> // 设备IP ，carmeraInfo中的deviceuserip
+<channelid>0</channelid>    // 通道ID  ，carmeraInfo中的channelno
+<streamtype>1</streamtype>  // 主子码流 ，0子码流，1主码流,app客户端请求子码流
+</request>
+
+/
+ // 流通道取消视频订阅
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+<type>8196</type>           // 请求命令
+<devid>176</devid>          // 设备ID
+<devip>192.168.1.153<devip/> // 设备IP
+<channelid>0</channelid>    // 通道ID
+<streamtype>1</streamtype>  // 主子码流
+</request>
+
+
+消息的格式 四个字符 “zrhx”+ 4个字节的命令类型 + 四个字节的长度 + 具体的命令信息
+
+
+PU的概念是设备，一个设备下边可以挂一个或者多个相机，所以 ＰＵＩＤ和相机不是一对一的，咱们协议里的ｄｅｖｉｃｅＩｄ　就是ＰＵＩＤ
+
+协议里的ｃｈａｎｎｅｌＩＤ　是设备下的第几个相机，　deviceid + channelid 这两个信息合起来表示一个唯一的相机
+
+转发服务器命令集：
+命令类型：
+#define  CMD_CMS_LOGIN_INFO     0x1001
+#define  CMD_CMS_GET_DEVICE     0x1002
+#define  CMD_CMS_ADD_DEVICE     0x1003
+#define  CMD_CMS_DEL_DEVICE     0x1004
+#define  CMD_CMS_GET_SERVICE    0x1005
+#define  CMD_CMS_GET_ORGNATION  0x1006
+#define  CMD_CMS_KEEP_ALIVE     0x1007
+
+#define  CMD_MDU_STREAM_OPEN            0x2001 打开流命令
+#define  CMD_MDU_STREAM_CLOSE           0x2002 关闭流命令
+#define  CMD_MDU_STREAM_DESCRIBE        0x2003 打开视频流命令
+#define  CMD_MDU_STREAM_UNDESCRIBE      0x2004 关闭视频流命令
+#define  CMD_GET_STREAM_PARAM           0x2005
+
+
+/**视频响应的xml信息*/
+<?xml version="1.0" encoding="utf-8"?>
+<response status="1">
+<type>8193</type>
+<devid>176</devid>
+<devip/>
+<channelid>0</channelid>
+<streamtype>1</streamtype>
+<streaminfo
+videowidth="704"
+videoheight="576"
+framerate="25"
+coderate="4096000"
+audiochannelcount="2"
+audiobitPersample="16"
+audiosamplepersec="48000"
+audiobitspersec="64000"/>
+</response>

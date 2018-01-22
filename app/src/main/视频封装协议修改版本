@@ -1,0 +1,77 @@
+预览视频请求
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+<type>8193</type>
+<devid>5</devid>
+<devip>192.168.3.141</devip>
+<channelid>0</channelid>
+<streamtype>1</streamtype>
+<cameraid>19</cameraid>
+<taskid>30003</taskid>
+</request>
+
+预览视频响应
+<?xml version="1.0" encoding="utf-8"?>
+<response status="1">
+<type>8193</type>
+<devid>5</devid>
+<devip>192.168.3.141</devip>
+<channelid>0</channelid>
+<streamtype>1</streamtype>
+<cameraid>19</cameraid>
+<taskid>30003</taskid>
+<streaminfo videowidth="1280" videoheight="960" framerate="25" coderate="4096000" audiochannelcount="2" audiobitPersample="16" audiosamplepersec="48000" audiobitspersec="64000"/>
+</response>
+
+
+回放请求
+
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+<type>12289</type>
+<begintime>1479277235</begintime>
+<endtime>1479278135</endtime>
+<streamset>
+<stream>
+<devid>5</devid>
+<devip>192.168.3.141</devip>
+<channelid>0</channelid>
+<streamtype>1</streamtype>
+<mediatype>2</mediatype>
+<cameraid>19</cameraid>
+<playindex>0</playindex>
+</stream>
+</streamset>
+</request>
+
+回放响应
+<?xml version="1.0" encoding="utf-8"?>
+<response status="1" describe="">
+<type>12289</type>
+<playtaskid>1000</playtaskid>
+<stream>
+<devid>6</devid>
+<devip>192.168.3.250</devip>
+<channelid>0</channelid>
+<streamtype>1</streamtype>
+<cameraid>20</cameraid>
+<playindex>2</playindex>
+<streaminfo videowidth="960" videoheight="576" framerate="25" coderate="4096000" audiochannelcount="2" audiobitPersample="0" audiosamplepersec="0" audiobitspersec="64000"/>
+</stream>
+</response>
+
+
+回放订阅
+<?xml version="1.0" encoding="utf-8"?>
+<request>
+<type>12290</type>
+<playtaskid>1007</playtaskid>
+<stream>
+<devid>6</devid>
+<channelid>0</channelid>
+<mediatype>2</mediatype>
+<streamtype>1</streamtype>
+<cameraid>20</cameraid>
+<playindex>2</playindex>
+</stream>
+</request>

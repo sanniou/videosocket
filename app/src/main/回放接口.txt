@@ -1,0 +1,69 @@
+
+1.cmd命令请求xml
+<?xml version="1.0" encoding="UTF-8"?>
+<request >
+ <type> </type> 
+  <begintime>  </begintime>  
+ <endtime>   </endtime>
+<streamset> 
+ <stream>
+ <devid></devid>
+ <devip></devip>
+ <channelid></channelid>
+ <mediatype> </mediatype>
+ <streamtype></streamtype>
+ </stream>
+ <stream>
+ <devid></devid>
+ <devip></devip>
+ <channelid></channelid>
+ <mediatype> </mediatype>
+ <streamtype></streamtype>
+ </stream>
+  ......
+ </streamset>
+</request> 
+
+
+2，cmd响应xml
+<?xml version="1.0" encoding="utf-8"?>
+<response status="1" describe="">
+<type>12289</type>
+<playtaskid>1001</playtaskid>
+<stream>
+<devid>5</devid>
+<devip>192.168.3.141</devip>
+<channelid>0</channelid>
+<streamtype>0</streamtype>
+<streaminfo videowidth="352" videoheight="288" framerate="25" coderate="4096000" audiochannelcount="2" audiobitPersample="0" audiosamplepersec="0" audiobitspersec="64000"/>
+</stream>
+</response>
+
+3，数据请求request
+
+<?xml version="1.0" encoding="UTF-8"?>
+<request >
+ <type> </type>
+ <playtaskid></playtaskid>
+  <begintime>  </begintime>
+ <endtime>   </endtime>
+<streamset>
+ <stream>
+ <devid></devid>
+ <devip></devip>
+ <channelid></channelid>
+ <mediatype> </mediatype>
+ <streamtype></streamtype>
+ </stream>
+ <stream>
+ <devid></devid>
+ <devip></devip>
+ <channelid></channelid>
+ <mediatype> </mediatype>
+ <streamtype></streamtype>
+ </stream>
+  ......
+ </streamset>
+</request>
+
+
